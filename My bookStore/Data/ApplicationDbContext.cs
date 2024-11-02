@@ -5,7 +5,7 @@ namespace My_bookStore.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options):base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext>options):base(options) // creating category table
 
         {
             
@@ -13,10 +13,17 @@ namespace My_bookStore.Data
 
         public DbSet<Category> Categories { get; set; }
 
-        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder) // inserting data in category table
         {
-            base.ConfigureConventions(configurationBuilder);
+            modelBuilder.Entity<Category>().HasData(
+                new Category { Id = 3, Name = "Drama", Displayorder = 3 },
+                new Category { Id = 1, Name = "Action", Displayorder = 1 },
+                new Category { Id = 2, Name = "Sci-fi", Displayorder = 2 },
+                new Category { Id = 4, Name = "Romance", Displayorder = 4 }
+                );
         }
+
+
 
     }
    
