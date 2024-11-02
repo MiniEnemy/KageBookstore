@@ -7,20 +7,24 @@
             <h1 class="text-primary">Create Category</h1>
             <hr />
         </div>
+        <div asp-validation-summary="All"></div>
+        @* to display all the error in one place if you do Modelonly instead of all it will show all model errors only and none will give no errors*@
         <div class=" mb-3 row p-1">
-            <label class="p-0">Category Name </label>
-              <input asp-for="Name" class="form-control" />   @* here Asp-for sends the text to name property*@         
+            <label asp-for="Name" class="p-0"> </label>
+            <input asp-for="Name" class="form-control" />   @* here Asp-for sends the text to name property*@
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="mb-3 row p-1">
-            <label class="p-0">Display Orderd</label>
+            <label asp-for="Displayorder" class="p-0"></label>
             <input asp-for="Displayorder" class="form-control" /> @* here Asp-for sends the text to Displayorder property*@
+            <span asp-validation-for="Displayorder" class="text-danger"></span>
         </div>
         <div class="row">
             <div class="col-6 col-md-3">
                 <button type="submit" class="btn btn-primary form-control">Create</button>
             </div>
             <div class="col-6 col-md-3">
-             <a asp-controller="Category" asp-action="Index" class="btn btn-secondary form-control">Back</a>
+                <a asp-controller="Category" asp-action="Index" class="btn btn-secondary form-control">Back</a>
 
             </div>
         </div>
